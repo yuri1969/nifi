@@ -18,6 +18,7 @@ package org.apache.nifi.web.api.dto;
 
 import org.apache.nifi.web.api.dto.action.ActionDTO;
 import org.apache.nifi.web.api.dto.diagnostics.ProcessorDiagnosticsDTO;
+import org.apache.nifi.web.api.dto.flow.FlowArborescenceDTO;
 import org.apache.nifi.web.api.dto.flow.FlowBreadcrumbDTO;
 import org.apache.nifi.web.api.dto.flow.ProcessGroupFlowDTO;
 import org.apache.nifi.web.api.dto.status.ConnectionStatusDTO;
@@ -45,6 +46,7 @@ import org.apache.nifi.web.api.entity.ConnectionStatusSnapshotEntity;
 import org.apache.nifi.web.api.entity.ControllerConfigurationEntity;
 import org.apache.nifi.web.api.entity.ControllerServiceEntity;
 import org.apache.nifi.web.api.entity.ControllerServiceReferencingComponentEntity;
+import org.apache.nifi.web.api.entity.FlowArborescenceEntity;
 import org.apache.nifi.web.api.entity.FlowBreadcrumbEntity;
 import org.apache.nifi.web.api.entity.FunnelEntity;
 import org.apache.nifi.web.api.entity.LabelEntity;
@@ -537,6 +539,23 @@ public final class EntityFactory {
 
             if (permissions != null && permissions.getCanRead()) {
                 entity.setBreadcrumb(dto);
+            }
+        }
+        return entity;
+    }
+
+    public FlowArborescenceEntity createFlowArborescenceEntity(final FlowArborescenceDTO dto, final PermissionsDTO permissions) {
+        final FlowArborescenceEntity entity = new FlowArborescenceEntity();
+        if (dto != null) {
+            entity.setPermissions(permissions);
+            entity.setId(dto.getId());
+
+            /*if (dto.getVersionControlInformation() != null) {
+                entity.setVersionedFlowState(dto.getVersionControlInformation().getState());
+            }*/
+
+            if (permissions != null && permissions.getCanRead()) {
+                entity.setArborescence(dto);
             }
         }
         return entity;

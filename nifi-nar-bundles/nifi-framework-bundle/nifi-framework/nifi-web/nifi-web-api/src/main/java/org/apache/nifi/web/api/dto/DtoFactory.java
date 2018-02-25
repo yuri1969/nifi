@@ -173,6 +173,7 @@ import org.apache.nifi.web.api.dto.diagnostics.JVMSystemDiagnosticsSnapshotDTO;
 import org.apache.nifi.web.api.dto.diagnostics.ProcessorDiagnosticsDTO;
 import org.apache.nifi.web.api.dto.diagnostics.RepositoryUsageDTO;
 import org.apache.nifi.web.api.dto.diagnostics.ThreadDumpDTO;
+import org.apache.nifi.web.api.dto.flow.FlowArborescenceDTO;
 import org.apache.nifi.web.api.dto.flow.FlowBreadcrumbDTO;
 import org.apache.nifi.web.api.dto.flow.FlowDTO;
 import org.apache.nifi.web.api.dto.flow.ProcessGroupFlowDTO;
@@ -200,6 +201,7 @@ import org.apache.nifi.web.api.entity.BulletinEntity;
 import org.apache.nifi.web.api.entity.ComponentReferenceEntity;
 import org.apache.nifi.web.api.entity.ConnectionStatusSnapshotEntity;
 import org.apache.nifi.web.api.entity.ControllerServiceEntity;
+import org.apache.nifi.web.api.entity.FlowArborescenceEntity;
 import org.apache.nifi.web.api.entity.FlowBreadcrumbEntity;
 import org.apache.nifi.web.api.entity.PortEntity;
 import org.apache.nifi.web.api.entity.PortStatusSnapshotEntity;
@@ -1728,6 +1730,48 @@ public final class DtoFactory {
         return dto;
     }
 
+    /**
+     * Creates a FlowArborescenceEntity from the specified parent ProcessGroup.
+     *
+     * @param group The current process group
+     * @param rootGroup The flow root group
+     * @return dto
+     */
+    private FlowArborescenceEntity createArborescenceEntity(final ProcessGroup group, final ProcessGroup rootGroup) {
+        if (group == null || rootGroup == null) {
+            return null;
+        }
+
+        final FlowArborescenceDTO dto = createArborescenceDto(rootGroup);
+        final PermissionsDTO permissions = createPermissionsDto(rootGroup);
+        final FlowArborescenceEntity entity = entityFactory.createFlowArborescenceEntity(dto, permissions);
+
+        // TODO - make the aborescence :]
+
+        return entity;
+    }
+
+    /**
+     * Creates a FlowArborescenceDTO from the specified parent ProcessGroup.
+     *
+     * @param group group
+     * @return dto
+     */
+    private FlowArborescenceDTO createArborescenceDto(final ProcessGroup group) {
+        if (group == null) {
+            return null;
+        }
+
+        final FlowArborescenceDTO dto = new FlowArborescenceDTO();
+        dto.setId(group.getIdentifier());
+        dto.setName(group.getName());
+
+        /*final VersionControlInformationDTO versionControlInformation = createVersionControlInformationDto(group);
+        dto.setVersionControlInformation(versionControlInformation);*/
+
+        return dto;
+    }
+
     public ComponentReferenceDTO createComponentReferenceDto(final Authorizable authorizable) {
         if (authorizable == null || !(authorizable instanceof ComponentAuthorizable)) {
             return null;
@@ -1939,13 +1983,14 @@ public final class DtoFactory {
         return createProcessGroupDto(group, false);
     }
 
-    public ProcessGroupFlowDTO createProcessGroupFlowDto(final ProcessGroup group, final ProcessGroupStatus groupStatus, final RevisionManager revisionManager,
+    public ProcessGroupFlowDTO createProcessGroupFlowDto(final ProcessGroup group, final ProcessGroup rootGroup, final ProcessGroupStatus groupStatus, final RevisionManager revisionManager,
                                                          final Function<ProcessGroup, List<BulletinEntity>> getProcessGroupBulletins) {
 
         final ProcessGroupFlowDTO dto = new ProcessGroupFlowDTO();
         dto.setId(group.getIdentifier());
         dto.setLastRefreshed(new Date());
         dto.setBreadcrumb(createBreadcrumbEntity(group));
+        dto.setRootArborescence(createArborescenceEntity(group, rootGroup));
         dto.setFlow(createFlowDto(group, groupStatus, revisionManager, getProcessGroupBulletins));
 
         final ProcessGroup parent = group.getParent();

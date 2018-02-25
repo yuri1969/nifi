@@ -18,6 +18,7 @@ package org.apache.nifi.web.api.dto.flow;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.nifi.web.api.dto.util.TimeAdapter;
+import org.apache.nifi.web.api.entity.FlowArborescenceEntity;
 import org.apache.nifi.web.api.entity.FlowBreadcrumbEntity;
 
 import javax.xml.bind.annotation.XmlType;
@@ -34,6 +35,7 @@ public class ProcessGroupFlowDTO {
     private String uri;
     private String parentGroupId;
     private FlowBreadcrumbEntity breadcrumb;
+    private FlowArborescenceEntity rootArborescence;
     private FlowDTO flow;
     private Date lastRefreshed;
 
@@ -81,6 +83,22 @@ public class ProcessGroupFlowDTO {
 
     public void setBreadcrumb(FlowBreadcrumbEntity breadcrumb) {
         this.breadcrumb = breadcrumb;
+    }
+
+    /**
+     * The arborescence for the root Process Group.
+     *
+     * @return The arborescence for the root Process Group
+     */
+    @ApiModelProperty(
+            value = "The arborescence of the root process group."
+    )
+    public FlowArborescenceEntity getRootArborescence() {
+        return rootArborescence;
+    }
+
+    public void setRootArborescence(FlowArborescenceEntity rootArborescence) {
+        this.rootArborescence = rootArborescence;
     }
 
     /**

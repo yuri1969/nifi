@@ -3588,7 +3588,8 @@ public class StandardNiFiServiceFacade implements NiFiServiceFacade {
         // read lock on every component being accessed in the dto conversion
         final ProcessGroupStatus groupStatus = controllerFacade.getProcessGroupStatus(groupId);
         final PermissionsDTO permissions = dtoFactory.createPermissionsDto(processGroup);
-        return entityFactory.createProcessGroupFlowEntity(dtoFactory.createProcessGroupFlowDto(processGroup, groupStatus, revisionManager, this::getProcessGroupBulletins), permissions);
+        final ProcessGroup rootGroup = processGroupDAO.getProcessGroup(controllerFacade.getRootGroupId());
+        return entityFactory.createProcessGroupFlowEntity(dtoFactory.createProcessGroupFlowDto(processGroup, rootGroup, groupStatus, revisionManager, this::getProcessGroupBulletins), permissions);
     }
 
     @Override
