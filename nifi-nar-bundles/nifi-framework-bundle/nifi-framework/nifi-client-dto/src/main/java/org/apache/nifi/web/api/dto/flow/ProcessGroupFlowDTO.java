@@ -86,18 +86,18 @@ public class ProcessGroupFlowDTO {
     }
 
     /**
-     * The arborescence for the root Process Group.
+     * The arborescence for this ProcessGroup flow.
      *
-     * @return The arborescence for the root Process Group
+     * @return The arborescence for this ProcessGroup flow.
      */
     @ApiModelProperty(
-            value = "The arborescence of the root process group."
+            value = "The arborescence of the flow."
     )
     public FlowArborescenceEntity getRootArborescence() {
         return rootArborescence;
     }
 
-    public void setRootArborescence(FlowArborescenceEntity rootArborescence) {
+    public void setRootArborescence(final FlowArborescenceEntity rootArborescence) {
         this.rootArborescence = rootArborescence;
     }
 
