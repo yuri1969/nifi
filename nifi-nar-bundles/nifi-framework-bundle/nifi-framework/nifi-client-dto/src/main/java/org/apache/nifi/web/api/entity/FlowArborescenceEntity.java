@@ -32,7 +32,7 @@ public class FlowArborescenceEntity extends Entity {
     private PermissionsDTO permissions;
     // private String versionedFlowState;
     private FlowArborescenceDTO arborescence;
-    private Set<FlowArborescenceEntity> childAborascences;
+    private Set<FlowArborescenceEntity> childArborascences;
 
     /**
      * The id for this ancestor ProcessGroup.
@@ -83,18 +83,18 @@ public class FlowArborescenceEntity extends Entity {
     }
 
     /**
-     * The child aborescences for this ancestor ProcessGroup.
+     * The child arborescences for this ancestor ProcessGroup.
      *
-     * @return The child aborescences
+     * @return The child arborescences
      */
     @ApiModelProperty(
-            value = "The child aborescences for this ancestor ProcessGroup."
+            value = "The child arborescences for this ancestor ProcessGroup."
     )
-    public Set<FlowArborescenceEntity> getChildAborascences() {
-        return childAborascences;
+    public Set<FlowArborescenceEntity> getChildArborascences() {
+        return childArborascences;
     }
 
-    public void setChildAborascences(Set<FlowArborescenceEntity> childAborascences) {
-        this.childAborascences = childAborascences;
+    public void setChildArborascences(Set<FlowArborescenceEntity> childArborascences) {
+        this.childArborascences = childArborascences;
     }
 }
