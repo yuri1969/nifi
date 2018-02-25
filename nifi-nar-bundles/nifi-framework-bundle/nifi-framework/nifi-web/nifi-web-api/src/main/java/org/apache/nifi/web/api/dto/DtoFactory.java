@@ -148,6 +148,7 @@ import org.apache.nifi.reporting.ReportingTask;
 import org.apache.nifi.scheduling.SchedulingStrategy;
 import org.apache.nifi.util.FlowDifferenceFilters;
 import org.apache.nifi.util.FormatUtils;
+import org.apache.nifi.util.Tuple;
 import org.apache.nifi.web.FlowModification;
 import org.apache.nifi.web.Revision;
 import org.apache.nifi.web.api.dto.action.ActionDTO;
@@ -229,6 +230,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -1742,13 +1744,36 @@ public final class DtoFactory {
             return null;
         }
 
+        final LinkedList<Tuple<FlowArborescenceEntity, ProcessGroup>> queue = new LinkedList<Tuple<FlowArborescenceEntity, ProcessGroup>>();
+
         final FlowArborescenceDTO dto = createArborescenceDto(rootGroup);
         final PermissionsDTO permissions = createPermissionsDto(rootGroup);
-        final FlowArborescenceEntity entity = entityFactory.createFlowArborescenceEntity(dto, permissions);
+        final FlowArborescenceEntity rootEntity = entityFactory.createFlowArborescenceEntity(dto, permissions);
 
-        // TODO - make the aborescence :]
+        queue.add(new Tuple<>(rootEntity, rootGroup));
 
-        return entity;
+        while (!queue.isEmpty()) {
+            final Tuple<FlowArborescenceEntity, ProcessGroup> currentTuple = queue.poll();
+            final ProcessGroup currentGroup = currentTuple.getValue();
+            final FlowArborescenceEntity currentEntity = currentTuple.getKey();
+
+            final Set<ProcessGroup> childGroups = currentGroup.getProcessGroups();
+            final Set<FlowArborescenceEntity> childAborescences = new HashSet<>();
+
+            for(ProcessGroup childGroup: childGroups) {
+                final FlowArborescenceDTO childDto = createArborescenceDto(childGroup);
+                final PermissionsDTO childPermissions = createPermissionsDto(childGroup);
+                final FlowArborescenceEntity childEntity = entityFactory.createFlowArborescenceEntity(childDto, childPermissions);
+
+                childAborescences.add(childEntity);
+                queue.add(new Tuple<FlowArborescenceEntity, ProcessGroup>(childEntity, childGroup));
+            }
+
+            currentEntity.setChildAborascences(childAborescences);
+        }
+        // TODO UncleBob this mess
+
+        return rootEntity;
     }
 
     /**

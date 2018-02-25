@@ -21,6 +21,7 @@ import org.apache.nifi.web.api.dto.PermissionsDTO;
 import org.apache.nifi.web.api.dto.flow.FlowArborescenceDTO;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Set;
 
 /**
  * A serialized representation of this class can be placed in the entity body of a request or response to or from the API. This particular entity holds a reference to a {@link FlowArborescenceDTO}.
@@ -30,9 +31,8 @@ public class FlowArborescenceEntity extends Entity {
     private String id;
     private PermissionsDTO permissions;
     // private String versionedFlowState;
-    // private FlowBreadcrumbDTO breadcrumb;
-    // private FlowBreadcrumbEntity parentBreadcrumb;
     private FlowArborescenceDTO arborescence;
+    private Set<FlowArborescenceEntity> childAborascences;
 
     /**
      * The id for this ancestor ProcessGroup.
@@ -80,5 +80,21 @@ public class FlowArborescenceEntity extends Entity {
 
     public void setArborescence(final FlowArborescenceDTO arborescence) {
         this.arborescence = arborescence;
+    }
+
+    /**
+     * The child aborescences for this ancestor ProcessGroup.
+     *
+     * @return The child aborescences
+     */
+    @ApiModelProperty(
+            value = "The child aborescences for this ancestor ProcessGroup."
+    )
+    public Set<FlowArborescenceEntity> getChildAborascences() {
+        return childAborascences;
+    }
+
+    public void setChildAborascences(Set<FlowArborescenceEntity> childAborascences) {
+        this.childAborascences = childAborascences;
     }
 }
