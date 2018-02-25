@@ -177,4 +177,22 @@
             </div>
         </div>
     </div>
+    <div id="arborescence-control" class="graph-control">
+        <div class="graph-control-docked pointer fa fa-sitemap" title="Arborescence"
+             ng-click="appCtrl.serviceProvider.graphControlsCtrl.undock($event)">
+        </div>
+        <div class="graph-control-header-container hidden pointer"
+             ng-click="appCtrl.serviceProvider.graphControlsCtrl.expand($event)">
+            <div class="graph-control-header-icon fa fa-sitemap">
+            </div>
+            <div class="graph-control-header">Arborescence</div>
+            <div class="graph-control-header-action">
+                <div class="graph-control-expansion fa fa-plus-square-o pointer"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="graph-control-content hidden">
+            <nf-arborescence></nf-arborescence>
+        </div>
+    </div>
 </div>

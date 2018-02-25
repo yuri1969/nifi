@@ -65,6 +65,7 @@
                 'nf.ng.AppCtrl',
                 'nf.ng.AppConfig',
                 'nf.ng.ServiceProvider',
+                'nf.ng.ArborescenceCtrl',
                 'nf.ng.BreadcrumbsCtrl',
                 'nf.ng.Canvas.HeaderCtrl',
                 'nf.ng.Canvas.FlowStatusCtrl',
@@ -81,10 +82,11 @@
                 'nf.ng.Canvas.GraphControlsCtrl',
                 'nf.ng.Canvas.NavigateCtrl',
                 'nf.ng.Canvas.OperateCtrl',
+                'nf.ng.ArborescenceDirective',
                 'nf.ng.BreadcrumbsDirective',
                 'nf.ng.DraggableDirective'],
-            function ($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, breadcrumbsDirective, draggableDirective) {
-                return factory($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, breadcrumbsDirective, draggableDirective);
+            function ($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, arborescenceCtrl, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, arborescenceDirective, breadcrumbsDirective, draggableDirective) {
+                return factory($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, arborescenceCtrl, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, arborescenceDirective, breadcrumbsDirective, draggableDirective);
             });
     } else if (typeof exports === 'object' && typeof module === 'object') {
         module.exports = factory(require('jquery'),
@@ -95,7 +97,7 @@
             require('nf.Client'),
             require('nf.ClusterSummary'),
             require('nf.Dialog'),
-            require('f.Storage'),
+            require('nf.Storage'),
             require('nf.Canvas'),
             require('nf.Graph'),
             require('nf.ContextMenu'),
@@ -133,6 +135,7 @@
             require('nf.ng.AppCtrl'),
             require('nf.ng.AppConfig'),
             require('nf.ng.ServiceProvider'),
+            require('nf.ng.ArborescenceCtrl'),
             require('nf.ng.BreadcrumbsCtrl'),
             require('nf.ng.Canvas.HeaderCtrl'),
             require('nf.ng.Canvas.FlowStatusCtrl'),
@@ -149,6 +152,7 @@
             require('nf.ng.Canvas.GraphControlsCtrl'),
             require('nf.ng.Canvas.NavigateCtrl'),
             require('nf.ng.Canvas.OperateCtrl'),
+            require('nf.ng.ArborescenceDirective'),
             require('nf.ng.BreadcrumbsDirective'),
             require('nf.ng.DraggableDirective'));
     } else {
@@ -198,6 +202,7 @@
             root.nf.ng.AppCtrl,
             root.nf.ng.AppConfig,
             root.nf.ng.ServiceProvider,
+            root.nf.ng.ArborescenceCtrl,
             root.nf.ng.BreadcrumbsCtrl,
             root.nf.ng.Canvas.HeaderCtrl,
             root.nf.ng.Canvas.FlowStatusCtrl,
@@ -214,10 +219,11 @@
             root.nf.ng.Canvas.GraphControlsCtrl,
             root.nf.ng.Canvas.NavigateCtrl,
             root.nf.ng.Canvas.OperateCtrl,
+            root.nf.ng.ArborescenceDirective,
             root.nf.ng.BreadcrumbsDirective,
             root.nf.ng.DraggableDirective);
     }
-}(this, function ($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, breadcrumbsDirective, draggableDirective) {
+}(this, function ($, angular, nfCommon, nfCanvasUtils, nfErrorHandler, nfClient, nfClusterSummary, nfDialog, nfStorage, nfCanvas, nfGraph, nfContextMenu, nfQuickSelect, nfShell, nfSettings, nfActions, nfSnippet, nfQueueListing, nfVariableRegistry, nfComponentState, nfFlowVersion, nfComponentVersion, nfDraggable, nfConnectable, nfStatusHistory, nfBirdseye, nfConnectionConfiguration, nfControllerService, nfReportingTask, nfPolicyManagement, nfProcessorConfiguration, nfProcessGroupConfiguration, nfControllerServices, nfRemoteProcessGroupConfiguration, nfRemoteProcessGroupPorts, nfPortConfiguration, nfLabelConfiguration, nfProcessorDetails, nfPortDetails, nfConnectionDetails, nfRemoteProcessGroupDetails, nfGoto, nfNgBridge, appCtrl, appConfig, serviceProvider, arborescenceCtrl, breadcrumbsCtrl, headerCtrl, flowStatusCtrl, globalMenuCtrl, toolboxCtrl, processorComponent, inputPortComponent, outputPortComponent, processGroupComponent, remoteProcessGroupComponent, funnelComponent, templateComponent, labelComponent, graphControlsCtrl, navigateCtrl, operateCtrl, arborescenceDirective, breadcrumbsDirective, draggableDirective) {
 
     var config = {
         urls: {
@@ -238,6 +244,7 @@
             appConfig.$inject = ['$mdThemingProvider', '$compileProvider'];
             appCtrl.$inject = ['$scope', 'serviceProvider', '$compile', 'headerCtrl', 'graphControlsCtrl'];
             serviceProvider.$inject = [];
+            arborescenceCtrl.$inject = ['serviceProvider'];
             breadcrumbsCtrl.$inject = ['serviceProvider'];
             headerCtrl.$inject = ['serviceProvider', 'toolboxCtrl', 'globalMenuCtrl', 'flowStatusCtrl'];
             flowStatusCtrl.$inject = ['serviceProvider'];
@@ -261,6 +268,7 @@
             graphControlsCtrl.$inject = ['serviceProvider', 'navigateCtrl', 'operateCtrl'];
             navigateCtrl.$inject = ['$timeout'];
             operateCtrl.$inject = [];
+            arborescenceDirective.$inject = [];
             breadcrumbsDirective.$inject = ['breadcrumbsCtrl'];
             draggableDirective.$inject = [];
 
@@ -272,6 +280,7 @@
 
             //Define Angular App Services
             app.service('serviceProvider', serviceProvider);
+            app.service('arborescenceCtrl', arborescenceCtrl);
             app.service('breadcrumbsCtrl', breadcrumbsCtrl);
             app.service('headerCtrl', headerCtrl);
             app.service('flowStatusCtrl', flowStatusCtrl);
@@ -290,6 +299,7 @@
             app.service('operateCtrl', operateCtrl);
 
             //Define Angular App Directives
+            app.directive('nfArborescence', arborescenceDirective);
             app.directive('nfBreadcrumbs', breadcrumbsDirective);
             app.directive('nfDraggable', draggableDirective);
 

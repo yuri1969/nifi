@@ -488,6 +488,7 @@
                                                 <include>${staging.dir}/js/nf/canvas/nf-controller-services.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/nf-reporting-task.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/nf-settings.js</include>
+                                                <include>${staging.dir}/js/nf/canvas/controllers/nf-ng-arborescence-controller.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/controllers/nf-ng-breadcrumbs-controller.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/controllers/nf-ng-canvas-header-controller.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/controllers/nf-ng-canvas-toolbox-controller.js</include>
@@ -504,6 +505,7 @@
                                                 <include>${staging.dir}/js/nf/canvas/header/components/nf-ng-funnel-component.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/header/components/nf-ng-template-component.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/header/components/nf-ng-label-component.js</include>
+                                                <include>${staging.dir}/js/nf/canvas/directives/nf-ng-arborescence-directive.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/directives/nf-ng-breadcrumbs-directive.js</include>
                                                 <include>${staging.dir}/js/nf/canvas/directives/nf-ng-draggable-directive.js</include>
                                                 <include>${staging.dir}/js/nf/nf-ng-app-controller.js</include>
