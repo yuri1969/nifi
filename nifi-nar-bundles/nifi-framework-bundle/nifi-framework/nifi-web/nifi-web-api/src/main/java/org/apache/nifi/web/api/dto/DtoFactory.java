@@ -1769,7 +1769,7 @@ public final class DtoFactory {
                 queue.add(new Tuple<FlowArborescenceEntity, ProcessGroup>(childEntity, childGroup));
             }
 
-            currentEntity.setChildArborascences(childAborescences);
+            currentEntity.setChildArborescences(childAborescences);
         }
         // TODO UncleBob this mess
 
