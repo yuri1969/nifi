@@ -39,7 +39,7 @@
         'use strict';
 
         function ArborescenceCtrl() {
-            this.breadcrumbs = [];
+            this.arborescence = {};
         }
 
         ArborescenceCtrl.prototype = {
@@ -54,7 +54,21 @@
                 }
             },
 
-            
+            /**
+             * Generate the arborescence.
+             *
+             * @param {object} arborescenceEntity  The arborescence
+             */
+            generateArborescence: function (arborescenceEntity) {
+                this.arborescence = arborescenceEntity;
+            },
+
+            /**
+             * Get the arborescence.
+             */
+            getArborescence: function () {
+                return this.arborescence;
+            },
         }
 
         var arborescenceCtrl = new ArborescenceCtrl();

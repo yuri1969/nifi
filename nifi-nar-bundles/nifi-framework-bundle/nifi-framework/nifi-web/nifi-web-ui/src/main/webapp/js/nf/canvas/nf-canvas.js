@@ -153,9 +153,10 @@
                 nfCanvas.setGroupName(breadcrumb.id);
             }
 
-            console.log(processGroupFlow.rootArborescence);
-            // update the breadcrumbs
-            console.log(nfNgBridge.injector.get('arborescenceCtrl'));
+            var arborescenceController = nfNgBridge.injector.get('arborescenceCtrl');
+            arborescenceController.generateArborescence(processGroupFlow.rootArborescence);
+            // inform Angular app values have changed
+            nfNgBridge.digest();
 
             // update the access policies
             permissions = flowResponse.permissions;

@@ -192,7 +192,9 @@
             <div class="clear"></div>
         </div>
         <div class="graph-control-content hidden">
-            <nf-arborescence></nf-arborescence>
+            <nf-arborescence
+                arborescence="appCtrl.serviceProvider.arborescenceCtrl.getArborescence();">
+            </nf-arborescence>
         </div>
     </div>
 </div>

@@ -15,7 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <div id="arborescence">
-    <div>foo</div>
+    <ul>
+        <li ng-repeat="arborescenceInst in arborescence.childArborescences | orderBy:'arborescence.name'">
+            <!-- ng-include="'views/nf-ng-arborescence-directive-view.html'"> -->
+            {{ arborescenceInst.arborescence.name }}
+        </li>
+    </ul>
     <!--<div id="data-flow-title-viewport">
         <div id="breadcrumbs-left-border"></div>
         <div id="data-flow-title-container">
