@@ -311,3 +311,12 @@ span.breadcrumb-version-control-gray {
     white-space: nowrap;
     line-height: normal;
 }
+
+#arborescence-container ol, #arborescence-container ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+#arborescence-container ol ol, #arborescence-container ul ul {
+    list-style-type: circle;
+}

@@ -14,28 +14,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<div id="arborescence">
-    <ul>
-        <li ng-repeat="arborescenceInst in arborescence.childArborescences | orderBy:'arborescence.name'">
-            <!-- ng-include="'views/nf-ng-arborescence-directive-view.html'"> -->
-            {{ arborescenceInst.arborescence.name }}
-        </li>
-    </ul>
-    <!--<div id="data-flow-title-viewport">
-        <div id="breadcrumbs-left-border"></div>
-        <div id="data-flow-title-container">
-            <span ng-repeat="crumb in breadcrumbs">
-                <span ng-if="separatorFunc(crumb.parentBreadcrumb)" style="margin: 0 12px;">
-                    &raquo;
-                </span>
-                <span ng-if="isTracking(crumb)" title="{{getVersionControlTooltip(crumb)}}" class="{{getVersionControlClass(crumb)}}" style="margin-right: 6px;"></span>
-                <span class="link"
-                      ng-class="(highlightCrumbId === crumb.id) ? 'link-bold' : ''"
-                      ng-click="clickFunc(crumb.id)">
-                    {{crumb.label}}
-                </span>
-            </span>
-        </div>
-        <div id="breadcrumbs-right-border"></div>
-    </div>-->
-</div>
+<span>{{ arborescenceinst.arborescence.name }}</span>
+<ul>
+    <li ng-repeat="arborescenceinst in arborescenceinst.childArborescences | orderBy:'arborescence.name'"
+         ng-include="'views/nf-ng-arborescence-directive-view.html'">
+    </li>
+</ul>

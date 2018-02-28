@@ -39,7 +39,7 @@
         'use strict';
 
         function ArborescenceCtrl() {
-            this.arborescence = {};
+            this.arborescenceinst = {};
         }
 
         ArborescenceCtrl.prototype = {
@@ -60,14 +60,14 @@
              * @param {object} arborescenceEntity  The arborescence
              */
             generateArborescence: function (arborescenceEntity) {
-                this.arborescence = arborescenceEntity;
+                this.arborescenceinst = arborescenceEntity;
             },
 
             /**
              * Get the arborescence.
              */
             getArborescence: function () {
-                return this.arborescence;
+                return this.arborescenceinst;
             },
         }
 
