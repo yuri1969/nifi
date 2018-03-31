@@ -320,3 +320,7 @@ span.breadcrumb-version-control-gray {
 #arborescence-container ol ol, #arborescence-container ul ul {
     list-style-type: circle;
 }
+
+#arborescence-container .current-pg {
+    text-decoration: underline;
+}

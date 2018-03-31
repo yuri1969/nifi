@@ -194,6 +194,7 @@
         <div class="graph-control-content hidden">
             <div id="arborescence-container">
                 <nf-arborescence
+                    currentpgid="appCtrl.serviceProvider.arborescenceCtrl.getCurrentPGId()"
                     arborescenceinst="appCtrl.serviceProvider.arborescenceCtrl.getArborescence()">
                 </nf-arborescence>
             </div>

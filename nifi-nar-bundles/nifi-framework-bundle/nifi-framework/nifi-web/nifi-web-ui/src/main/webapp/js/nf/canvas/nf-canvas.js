@@ -154,7 +154,7 @@
             }
 
             var arborescenceController = nfNgBridge.injector.get('arborescenceCtrl');
-            arborescenceController.generateArborescence(processGroupFlow.rootArborescence);
+            arborescenceController.generateArborescence(processGroupFlow.id, processGroupFlow.rootArborescence);
             // inform Angular app values have changed
             nfNgBridge.digest();
 

@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<span>{{ arborescenceinst.arborescence.name }}</span>
+<span ng-class="{'current-pg': arborescenceinst.arborescence.id === currentpgid}">{{ arborescenceinst.arborescence.name }}</span>
 <ul>
     <li ng-repeat="arborescenceinst in arborescenceinst.childArborescences | orderBy:'arborescence.name'"
          ng-include="'views/nf-ng-arborescence-directive-view.html'">

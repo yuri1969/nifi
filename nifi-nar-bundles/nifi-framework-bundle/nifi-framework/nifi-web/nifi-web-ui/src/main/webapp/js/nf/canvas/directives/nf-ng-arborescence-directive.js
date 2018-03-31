@@ -39,6 +39,7 @@
             restrict: 'E',
             templateUrl: 'views/nf-ng-arborescence-directive-view.html',
             scope: {
+                'currentpgid': '=',
                 'arborescenceinst': '='/*,
                 'clickFunc': '=',
                 'highlightCrumbId': '=',

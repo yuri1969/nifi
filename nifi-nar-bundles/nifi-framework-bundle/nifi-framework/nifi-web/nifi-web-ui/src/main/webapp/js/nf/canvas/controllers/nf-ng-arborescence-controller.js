@@ -40,6 +40,7 @@
 
         function ArborescenceCtrl() {
             this.arborescenceinst = {};
+            this.currentpgid = '';
         }
 
         ArborescenceCtrl.prototype = {
@@ -57,10 +58,12 @@
             /**
              * Generate the arborescence.
              *
-             * @param {object} arborescenceEntity  The arborescence
+             * @param {string} currentpgid  The current Process Group ID
+             * @param {object} arborescenceinst  The arborescence
              */
-            generateArborescence: function (arborescenceEntity) {
-                this.arborescenceinst = arborescenceEntity;
+            generateArborescence: function (currentpgid, arborescenceinst) {
+                this.currentpgid = currentpgid;
+                this.arborescenceinst = arborescenceinst;
             },
 
             /**
@@ -69,6 +72,10 @@
             getArborescence: function () {
                 return this.arborescenceinst;
             },
+
+            getCurrentPGId: function () {
+                return this.currentpgid;
+            }
         }
 
         var arborescenceCtrl = new ArborescenceCtrl();
